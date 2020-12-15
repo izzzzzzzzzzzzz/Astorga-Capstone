@@ -22,7 +22,9 @@ contract('TestSolnSquareVerifier', accounts => {
     describe('Test if a new solution can be added for contract', function () {
         beforeEach(async function () { 
             const verifier = await Verifier.new({ from: acct_one });
+            console.log('here 1');
             this.contract = await SolnSquareVerifier.new(verifier.address);
+            console.log('here 3');
         })
         
         // Test if a new solution can be added for contract - SolnSquareVerifier

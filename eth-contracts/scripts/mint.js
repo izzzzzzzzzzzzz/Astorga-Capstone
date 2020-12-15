@@ -7,7 +7,7 @@ const NODE_API_KEY = "d72a29bf975b46df83aace69c45553ac"
 //const isInfura = !!process.env.INFURA_KEY;
 const isInfura = true;
 const FACTORY_CONTRACT_ADDRESS = null;
-const NFT_CONTRACT_ADDRESS = "0xE9C8B4cDbBD04eBe2cB071d5ceB4Fe543d6ABBaa";
+const NFT_CONTRACT_ADDRESS = "0x1D504949B206785Ed63Fd1F2a568D46F077C08C0";
 const OWNER_ADDRESS = "0x59ba8C060abc9522F900a48a57736f9077C98B6D";
 const NETWORK = "rinkeby";
 
@@ -79,7 +79,6 @@ async function main() {
       : "https://eth-" + network + ".alchemyapi.io/v2/" + NODE_API_KEY
   );
   const web3Instance = new web3(provider);
-
   if (NFT_CONTRACT_ADDRESS) {
     const nftContract = new web3Instance.eth.Contract(
       NFT_ABI,
@@ -88,7 +87,6 @@ async function main() {
     );
     // Creatures issued directly to the owner.
     for (var i = 3; i < NUM_CREATURES; i++) {
-      console.log('Marco 2');
       const result = await nftContract.methods
         .mintTo(OWNER_ADDRESS)
         .send({ from: OWNER_ADDRESS });

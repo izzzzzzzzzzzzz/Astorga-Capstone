@@ -19,7 +19,7 @@ contract SolnSquareVerifier is CustomERC721Token {
     //     verifierContract = SquareVerifier(verifierAddress);
     // }
 
-    constructor(address verifierAddress) public {
+    constructor(address verifierAddress) CustomERC721Token() public {
         verifierContract = SquareVerifier(verifierAddress);
         _index = 1;
     }
