@@ -29,17 +29,12 @@ contract Ownable {
 
 
     //  4) fill out the transferOwnership function
-
     function transferOwnership(address newOwner) public onlyOwner {
-    //     _transferOwnership(newOwner);
-    // }
-
         // TODO add functionality to transfer control of the contract to a newOwner.
         // make sure the new owner is a real address
         // require (newOwner != address(0), "address is not valid");
         _owner = newOwner;
         emit OwnershipTransfer(newOwner);
-        // _owner = newOwner;
     }
 
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
@@ -290,7 +285,6 @@ contract ERC721 is Pausable, ERC165 {
         // TODO: update token counts & transfer ownership of the token ID 
         _ownedTokensCount[toAddress].increment();
         _ownedTokensCount[from].decrement();
-        
         _tokenOwner[tokenId] = toAddress;
 
         // TODO: emit correct event

@@ -4,8 +4,7 @@ var verifier = artifacts.require('Verifier');
 
 contract('verifier', accounts => {
     const acct_one = accounts[0];
-    const acct_two = accounts[1];
-
+    
     let proofJson = {
         "proof": {
             "a": ["0x16f282875586bac36e1df992eb9aa09ffec5119e420f50d1ea61688bed3c266e", "0x0a2eecfea9e36c4a2c8a987f269cbe3ce230fcbac332cbf513ccad2bad51c42b"],
@@ -21,31 +20,19 @@ contract('verifier', accounts => {
         beforeEach(async function () { 
             try { 
                 this.contract = await verifier.new({ from: acct_one });
-                console.log('i am in beforeEach');
-                // console.log(this.contract);
             } catch (error) {
                 console.log(error);
             }
         })
 
         it('Correct Proof Validated', async function () { 
-            console.log(proofJson.inputs);
-            console.log(acct_one);
             let results = await this.contract.verifyTx.call(proofJson.proof.a, proofJson.proof.b, proofJson.proof.c, proofJson.inputs);
-            console.log("results - correct proof");
-            console.log(results);
-            // console.log(results.receipts);
-            //let results = await this.contract.verifyTx.call(proofJson.proof.a, proofJson.proof.b, proofJson.proof.c, proofJson.inputs, {from: account_one});
             assert.equal(results, true, "Proof could not be validated");
-
         });
 
         it('Test verification with incorrect proof', async function () { 
             let proofInputs = [5, 5];
             let results = await this.contract.verifyTx.call(proofJson.proof.a, proofJson.proof.b, proofJson.proof.c, proofInputs, {from: acct_one});
-            console.log("results - incorrect proof");
-            console.log(results);
-            // console.log(results.receipt.status);
             assert.equal(results, false, "Proof is incorrect");
         });
     });

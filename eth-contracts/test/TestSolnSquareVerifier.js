@@ -5,9 +5,6 @@ var SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
 contract('TestSolnSquareVerifier', accounts => {
     const acct_one = accounts[0];
     const acct_two = accounts[1];
-    // const acct_three = accounts[2];
-
-    // const uri = "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/";
 
     let proof = {
         "proof": {
@@ -17,14 +14,11 @@ contract('TestSolnSquareVerifier', accounts => {
         },
         "inputs": ["0x0000000000000000000000000000000000000000000000000000000000000009", "0x0000000000000000000000000000000000000000000000000000000000000001"]
     }
-    
 
     describe('Test if a new solution can be added for contract', function () {
         beforeEach(async function () { 
             const verifier = await Verifier.new({ from: acct_one });
-            console.log('here 1');
             this.contract = await SolnSquareVerifier.new(verifier.address);
-            console.log('here 3');
         })
         
         // Test if a new solution can be added for contract - SolnSquareVerifier
@@ -37,7 +31,6 @@ contract('TestSolnSquareVerifier', accounts => {
         it('ERC721 token can be minted', async function () { 
             let mint = true;
             try {
-                // await this.contract.mintNTF(acct_two, 2, proof.proof.a, proof.proof.b, proof.proof.c, {from: acct_one} )
                 await this.contract.mintNTF(acct_two, 2, proof.proof.a, proof.proof.b, proof.proof.c, proof.inputs, {from: acct_one} )
             } catch {
                 mint = false;
