@@ -32,13 +32,13 @@ You can go check the following below link with the contract addresses to find th
 https://rinkeby.etherscan.io/address/
 
 SolnSquareVerifier Contract Address: 0x1D504949B206785Ed63Fd1F2a568D46F077C08C0
+
 Verifier Contract Address: 0x516e674Df6128DF0ab529Fb20194D3628e0c4974
+
 Contract Owner: 0x59ba8C060abc9522F900a48a57736f9077C98B6D
 
 Listed tokens in OpenSea:
 OpenSea link: https://testnets.opensea.io/storefront/asttoken-v4 
-
-
 
 # Project Resources
 
